@@ -1,8 +1,13 @@
 %%
 clear
 clc
-C1_sin_data = load('KF_y.txt');
-C1_cos_data = load('yMeasure.txt');
+close all
+C1_sin_data = load('./data/Sine30_SingleChannel_15dian43mV.txt');
+C1_cos_data = load('./data/Sine30_SingleChannel_15dian43mV.txt');
+
+C1_sin_data = detrend(C1_sin_data);
+C1_cos_data = detrend(C1_cos_data);
+
 %%
 %fs = 100e3/25;
 fs = 1000;
@@ -22,6 +27,7 @@ hold on
 semilogy(C1_cos_fout_1Hz,C1_cos_PSD_1Hz,'LineWidth',1.5);
 xlabel('ÆµÂÊ/Hz','FontSize',30,'FontWeight','bold');
 ylabel('·ùÖµV/Hz^{1/2}','FontSize',30,'FontWeight','bold');
+legend('KF estimate', 'Measurement');
 %%
 % xlim([1,200]);
 % grid on
