@@ -2,8 +2,8 @@
 clear
 clc
 close all
-C1_sin_data = load('./data/Sine30_SingleChannel_15dian43mV.txt');
-C1_cos_data = load('./data/Sine30_SingleChannel_15dian43mV.txt');
+C1_sin_data = load('./paper_data/KF_y_30Hz.txt');
+C1_cos_data = load('./paper_data/yMeasure_30Hz.txt');
 
 C1_sin_data = detrend(C1_sin_data);
 C1_cos_data = detrend(C1_cos_data);
