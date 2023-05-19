@@ -1,0 +1,2 @@
+Z_REF_SCALE = 9.598   误差棒，20Hz正弦实验的scale factor.
+
