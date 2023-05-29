@@ -45,7 +45,7 @@ xlabel('Frequency (Hz)', 'FontSize', 10);
 ylabel('Amplitude (mV/Hz^{1/2})', 'FontSize', 10);
 
 % Add legend
-legend('KF estimate', 'Measurement', 'FontSize', 8);
+legend('KF estimate', 'Measurement', 'FontSize', 8,'box','off');
 
 % Adjust the line widths for better visibility in print
 set(findobj(gca, 'Type', 'Line'), 'LineWidth', 1.2);

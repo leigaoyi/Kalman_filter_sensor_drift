@@ -15,7 +15,7 @@ track_color = [237, 33, 41] / 255; % RGB values for #ED2129
 measure_color = [0.23, 0.27, 0.61];
 % Define figure size
 
-figure('Units', 'inches', 'Position', [1, 1, 10, 8]); % Width: 8 inches, Height: 6 inches
+figure('Units', 'centimeters', 'Position', [2, 2, 20, 26]);
 % First subplot: Plotting ideal response, measurement, and KF estimate
 subplot(2, 1, 1); % Divide the figure into 1 row, 2 columns, and select the first subplot
 % Plot reference curve as a line
@@ -23,10 +23,10 @@ plot(time_period, ref_curve, 'k-', 'LineWidth', 1);
 hold on;
 
 % Plot measured data with markers and no line
-plot(time_period, measure_mean, 'Marker', 's', 'LineWidth', 1.5,'MarkerSize', 8, 'LineStyle', 'none', 'Color', measure_color);
+plot(time_period, measure_mean, 'Marker', 's', 'LineWidth', 1.5,'MarkerSize', 6, 'LineStyle', 'none', 'Color', measure_color);
 
 % Plot tracked data with markers and no line
-plot(time_period, track_mean, 'Marker', 'o', 'LineWidth', 1.2,'MarkerSize', 8, 'LineStyle', 'none', 'Color', track_color);
+plot(time_period, track_mean, 'Marker', 'o', 'LineWidth', 1.2,'MarkerSize', 6, 'LineStyle', 'none', 'Color', track_color);
 % Remove x-label from the first subplot
 xticklabels({});
 % Customize the plot
@@ -41,7 +41,7 @@ grid on;
 hold off;
 
 % Adjust figure properties for publication quality
-set(gca, 'FontSize', 12); % Increase font size
+set(gca, 'FontSize', 16); % Increase font size
 set(gca, 'LineWidth', 1.5); % Increase line width
 set(gca, 'TickDir', 'in'); % Set tick direction
 set(gca, 'Box', 'on'); % Remove box around the plot
@@ -80,6 +80,10 @@ measure_upper = measure_norm + measure_std / rms_value;
 track_lower = track_norm - track_std / rms_value;
 track_upper = track_norm + track_std / rms_value;
 
+mean(abs(measure_norm))
+mean(abs(track_norm))
+
+
 measure_lower = reshape(measure_lower, 1, 50);
 measure_upper = reshape(measure_upper, 1, 50);
 
@@ -99,16 +103,16 @@ plot(time_period, measure_norm, 'LineWidth', 1.5, 'Color', measure_color);
 plot(time_period, track_norm, 'LineWidth', 1.5, 'Color', track_color);
 
 % Customize the plot
-xlabel('Time (ms)', 'FontSize', 10);
-ylabel('\Deltay / \deltaB_{rms}', 'FontSize', 10);
+xlabel('Time (ms)', 'FontSize', 16);
+ylabel('\Deltay / \deltaB_{rms}', 'FontSize', 16);
 legend('Measurement error', 'KF estimate error', 'FontSize', 14, 'Box', 'off');
 grid on;
 box on;
 xlim([0.5, 50.5]);
 %ylim([-2, 2]); % Adjust the y-axis limits as needed
-
+yticks([-0.2,-0.1,0,0.1,0.2]);
 % Adjust figure properties for publication quality
-set(gca, 'FontSize', 12); % Decrease font size slightly for publication
+set(gca, 'FontSize', 16); % Decrease font size slightly for publication
 set(gca, 'LineWidth', 1.5); % Increase line width
 set(gca, 'TickDir', 'in'); % Set tick direction
 set(gcf, 'Color', 'w'); % Set background color to white
@@ -123,9 +127,9 @@ ax2.Position(4) = ax2.Position(4) + 0.06;
 linkaxes([ax1, ax2], 'x');
 
 
-text(-0.05, 1.89, '(a)', 'Units', 'normalized', 'FontSize', 14, 'FontWeight', 'bold', 'HorizontalAlignment', 'right');
+text(-0.08, 1.89, '(a)', 'Units', 'normalized', 'FontSize', 16, 'FontWeight', 'bold', 'HorizontalAlignment', 'right');
 % Add label "(b)" outside the plot box
-text(-0.05, 0.99, '(b)', 'Units', 'normalized', 'FontSize', 14, 'FontWeight', 'bold', 'HorizontalAlignment', 'right');
+text(-0.08, 0.99, '(b)', 'Units', 'normalized', 'FontSize', 16, 'FontWeight', 'bold', 'HorizontalAlignment', 'right');
 
 
 print('KF_track_error', '-dpng', '-r600'); % Specify the desired image format and resolution
