@@ -35,7 +35,7 @@ ylabel('Response (mV)');
 % title('Measurement and Tracking');
 
 % Create a legend
-legend('Ideal Response', 'Measurement', 'KF estimate', 'FontSize', 14, 'Box', 'off');
+legend('Reference', 'Measurement', 'KF estimate', 'FontSize', 14, 'Box', 'off');
 
 grid on;
 hold off;
