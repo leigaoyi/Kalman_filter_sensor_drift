@@ -1,8 +1,8 @@
 clear
 clc
 close all
-C1_sin_data = load('../result/yMeasure_MCG_145C.txt');
-C1_cos_data = load('../result/KF_y_MCG_145C.txt');
+C1_sin_data = load('../result/KF_y_delay0_145C_20Hz.txt');
+C1_cos_data = load('../result/KF_y_delay5_145C_20Hz.txt');
 
 % Convert the hexadecimal color code to RGB values
 measure_color = [0.9294,0.1294,0.1608]; % RGB values for #ED2129
@@ -40,7 +40,7 @@ hold on;
 
 
 % Add the dashed line y = 1.8824
-semilogy(C1_cos_fout_1Hz, 1.8824 * ones(size(C1_cos_fout_1Hz)), '--', 'LineWidth', 1.8, 'Color', 'magenta');
+%semilogy(C1_cos_fout_1Hz, 1.8824 * ones(size(C1_cos_fout_1Hz)), '--', 'LineWidth', 1.8, 'Color', 'magenta');
 
 hold off;
 
@@ -60,7 +60,7 @@ xlabel('Frequency (Hz)', 'FontSize', 10);
 ylabel('Sensitivity (fT/Hz^{1/2})', 'FontSize', 10);
 
 % Add legend
-legend( 'Measurement','KF estimate','Quantum Noise Limit', 'FontSize', 8,'box','off');
+legend( 'delay 0','delay 2', 'FontSize', 8,'box','off');
 
 % Adjust the line widths for better visibility in print
 set(findobj(gca, 'Type', 'Line'), 'LineWidth', 1.2);

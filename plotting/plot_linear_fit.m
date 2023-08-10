@@ -2,36 +2,41 @@ close all;
 clear
 
 
-input_signal = 1000*load('../result/145C_large_sweep_x.txt')*9.2393/1000; % nT
-output_signal = 1000*load('../result/145C_large_sweep_y.txt');
-input_signal = input_signal(2:end); 
-output_signal = output_signal(2:end);
+%input_signal = 1000*load('../result/145C_large_sweep_x.txt')*9.2393/1000; % nT
+%output_signal = 1000*load('../result/145C_large_sweep_y.txt');
+input_signal = 1000*[-5,-4.89898989898990,-4.79797979797980,-4.69696969696970,-4.59595959595960,-4.49494949494950,-4.39393939393939,-4.29292929292929,-4.19191919191919,-4.09090909090909,-3.98989898989899,-3.88888888888889,-3.78787878787879,-3.68686868686869,-3.58585858585859,-3.48484848484849,-3.38383838383838,-3.28282828282828,-3.18181818181818,-3.08080808080808,-2.97979797979798,-2.87878787878788,-2.77777777777778,-2.67676767676768,-2.57575757575758,-2.47474747474748,-2.37373737373737,-2.27272727272727,-2.17171717171717,-2.07070707070707,-1.96969696969697,-1.86868686868687,-1.76767676767677,-1.66666666666667,-1.56565656565657,-1.46464646464646,-1.36363636363636,-1.26262626262626,-1.16161616161616,-1.06060606060606,-0.959595959595959,-0.858585858585859,-0.757575757575758,-0.656565656565657,-0.555555555555555,-0.454545454545455,-0.353535353535354,-0.252525252525253,-0.151515151515151,-0.0505050505050502,0.0505050505050502,0.151515151515151,0.252525252525253,0.353535353535354,0.454545454545454,0.555555555555555,0.656565656565657,0.757575757575758,0.858585858585858,0.959595959595959,1.06060606060606,1.16161616161616,1.26262626262626,1.36363636363636,1.46464646464646,1.56565656565657,1.66666666666667,1.76767676767677,1.86868686868687,1.96969696969697,2.07070707070707,2.17171717171717,2.27272727272727,2.37373737373737,2.47474747474748,2.57575757575758,2.67676767676768,2.77777777777778,2.87878787878788,2.97979797979798,3.08080808080808,3.18181818181818,3.28282828282828,3.38383838383838,3.48484848484848,3.58585858585859,3.68686868686869,3.78787878787879,3.88888888888889,3.98989898989899,4.09090909090909,4.19191919191919,4.29292929292929,4.39393939393939,4.49494949494950,4.59595959595960,4.69696969696970,4.79797979797980,4.89898989898990,5];
+input_signal = input_signal *9.2393/1000; % nT
+output_signal = 10.49581*1000*[-0.0150571150060847,-0.0157713788440040,-0.0163491726822574,-0.0171200226063116,-0.0178744292109024,-0.0186894717611978,-0.0196997576161989,-0.0206783321213172,-0.0217691488667140,-0.0230061375611525,-0.0243379794861123,-0.0258461993541835,-0.0275319436579041,-0.0294166431098404,-0.0314990413042378,-0.0338209967483534,-0.0364226459759129,-0.0393705325673257,-0.0427197079053151,-0.0465547076657731,-0.0508753743523174,-0.0558795739772867,-0.0616102611729664,-0.0682091829699135,-0.0758312189545566,-0.0846622506289799,-0.0948669916692150,-0.106704428725470,-0.120271855484554,-0.135891867620568,-0.153566378175281,-0.173443336022571,-0.195445209929988,-0.219203353665273,-0.244170347007762,-0.269785639876265,-0.295024590455466,-0.318778343010334,-0.339638390790089,-0.356158370417607,-0.366903774293136,-0.370491719612886,-0.365393080353305,-0.350359959189885,-0.324251669428211,-0.286757402203046,-0.237964437206668,-0.178396464960197,-0.110661056700282,-0.0373651511848596,0.0372739113444117,0.109707243238352,0.176372329731354,0.234558783597482,0.282438938797842,0.319498363271390,0.345711101926347,0.361507561872820,0.367920110620161,0.365982162379465,0.356975382067288,0.342245722430517,0.323183655583636,0.301043490040717,0.277195609080658,0.252633938461059,0.228333908228470,0.204925620159203,0.183131331616830,0.163168438778668,0.145079265343711,0.129023000112176,0.114915343197427,0.102540460304151,0.0917359488696879,0.0822824339858846,0.0741092501151096,0.0669502567091570,0.0607475664832096,0.0553057511281103,0.0505834337615094,0.0463863706882526,0.0427396433986365,0.0394581550657473,0.0365966121944086,0.0340369762586414,0.0317646003070733,0.0297530053486131,0.0279027076112761,0.0262530451297386,0.0247358771321679,0.0233419929473525,0.0220778408754926,0.0209458952276457,0.0199242807628299,0.0189837797793826,0.0181282665251626,0.0173509306816152,0.0166176437540837,0.0159280937504586];
+
+
+%input_signal = input_signal(2:end); 
+%output_signal = output_signal(2:end);
 
 % Set the figure size and position
-figure('Units', 'centimeters', 'Position', [2, 2, 10, 8]);
+figure('Units', 'centimeters', 'Position', [2, 2, 18, 12]);
 
 % Plot the input-output relationship
 plot(input_signal, output_signal, 'b','LineWidth', 1.5); % Adjust marker size, marker face color, and marker edge color
 hold on;
 
 % Add labels and title
-xlabel('\deltaB_x (nT)', 'FontSize', 10); % Adjust font size
-ylabel('Response (mV)', 'FontSize', 10); % Adjust font size
+xlabel('\deltaB_x (nT)', 'FontSize', 16); % Adjust font size
+ylabel('Response (mV)', 'FontSize', 16); % Adjust font size
 %title('Linear Fitting', 'FontSize', 12, 'FontWeight', 'bold'); % Adjust font size and add bold font weight
 
 % Add legend
-legend('Magnetic Response Curve', 'FontSize', 8, 'Box', 'off', 'Location', 'northwest'); % Adjust font size
+legend('Magnetic Response Curve', 'FontSize', 14, 'Box', 'off', 'Location', 'northwest'); % Adjust font size
 
 % Customize grid appearance
 grid on;
 gridLineColor = [0.8, 0.8, 0.8]; % RGB values for grid line color
 gridLineWidth = 0.5;
-set(gca, 'GridColor', gridLineColor, 'LineWidth', gridLineWidth, 'FontSize', 8); % Adjust font size
+set(gca, 'GridColor', gridLineColor, 'LineWidth', gridLineWidth, 'FontSize', 14); % Adjust font size
 
 % Adjust axis limits if needed
 xlim([min(input_signal)-1.5, max(input_signal)+1.5]);
-ylim([min(output_signal)-30, max(output_signal)+30]);
-
+ylim([min(output_signal)-300, max(output_signal)+300]);
+print('../result/sweep_large_ZI', '-dpng', '-r1000'); % Specify the desired image format and resolution
 
 input_signal2 = 1000*load('../result/145C_small_sweep_x.txt')*9.2393;
 output_signal2 = 1000*load('../result/145C_small_sweep_y.txt');
@@ -40,10 +45,10 @@ output_signal2 = 1000*load('../result/145C_small_sweep_y.txt');
 
 
 % Set the figure size and position
-figure('Units', 'centimeters', 'Position', [2, 2, 10, 8]);
+figure('Units', 'centimeters', 'Position', [2, 2, 16, 9]);
 
 % Plot the input-output relationship
-plot(input_signal2, output_signal2, 'ko','LineWidth', 1.5, 'MarkerSize', 6, 'MarkerFaceColor', 'w', 'MarkerEdgeColor', 'r'); % Adjust marker size, marker face color, and marker edge color
+plot(input_signal2, output_signal2, 'ko','LineWidth', 1.5, 'MarkerSize', 4, 'MarkerFaceColor', 'w', 'MarkerEdgeColor', 'r'); % Adjust marker size, marker face color, and marker edge color
 hold on;
 
 % % Perform linear fitting
@@ -54,19 +59,21 @@ fit_line = polyval(coefficients, input_signal2);
 plot(input_signal2, fit_line, 'k-', 'LineWidth', 1.5); % Adjust line color and width
 
 % Add labels and title
-xlabel('\deltaB_x (pT)', 'FontSize', 10); % Adjust font size
-ylabel('Response (mV)', 'FontSize', 10); % Adjust font size
+xlabel('\deltaB_x (pT)', 'FontSize', 14); % Adjust font size
+ylabel('Response (mV)', 'FontSize', 14); % Adjust font size
 %title('Linear Fitting', 'FontSize', 12, 'FontWeight', 'bold'); % Adjust font size and add bold font weight
 
 % Add legend
-legend('Experimental Data', 'Linear Fitting', 'FontSize', 8, 'Box', 'off', 'Location', 'northwest'); % Adjust font size
+legend('Experimental Data', 'Linear Fitting', 'FontSize', 12, 'Box', 'off', 'Location', 'northwest'); % Adjust font size
 
 % Customize grid appearance
 grid on;
 gridLineColor = [0.8, 0.8, 0.8]; % RGB values for grid line color
 gridLineWidth = 0.5;
-set(gca, 'GridColor', gridLineColor, 'LineWidth', gridLineWidth, 'FontSize', 8); % Adjust font size
+set(gca, 'GridColor', gridLineColor, 'LineWidth', gridLineWidth, 'FontSize', 12); % Adjust font size
+xticks([-200,-150,-100, -50,0,50,100,150,200]);
 
+%print('../result/sweep_small_fit', '-dpng', '-r1000'); % Specify the desired image format and resolution
 % Adjust axis limits if needed
 % xlim([min(input_signal2)-1.5, max(input_signal2)+1.5]);
 % ylim([min(output_signal2)-30, max(output_signal2)+30]);
