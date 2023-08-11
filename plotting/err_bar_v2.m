@@ -1,12 +1,12 @@
 % Load data
 close all
 clear
-ref_load = load('./result/ref_errbar.txt');
+ref_load = load('../result/ref_errbar.txt');
 ref_curve = ref_load;
-measure_mean = load('./result/measure_mean.txt');
-measure_std = 2*load('./result/measure_err.txt');
-track_mean = load('./result/track_mean.txt');
-track_std = 2*load('./result/track_err.txt'); % 2 std
+measure_mean = load('../result/measure_mean.txt');
+measure_std = 2*load('../result/measure_err.txt');
+track_mean = load('../result/track_mean.txt');
+track_std = 2*load('../result/track_err.txt'); % 2 std
 
 time_period = 1:50; % Example range from 1 to 50
 

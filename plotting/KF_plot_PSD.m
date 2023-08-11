@@ -1,8 +1,8 @@
 clear
 clc
 close all
-C1_sin_data = load('../result/KF_y_delay0_145C_20Hz.txt');
-C1_cos_data = load('../result/KF_y_delay5_145C_20Hz.txt');
+C1_sin_data = load('../result/yMeasure_delay8_145C_30Hz.txt');
+C1_cos_data = load('../result/KF_y_delay8_145C_30Hz.txt');
 
 % Convert the hexadecimal color code to RGB values
 measure_color = [0.9294,0.1294,0.1608]; % RGB values for #ED2129
@@ -40,7 +40,7 @@ hold on;
 
 
 % Add the dashed line y = 1.8824
-%semilogy(C1_cos_fout_1Hz, 1.8824 * ones(size(C1_cos_fout_1Hz)), '--', 'LineWidth', 1.8, 'Color', 'magenta');
+semilogy(C1_cos_fout_1Hz, 1.8824 * ones(size(C1_cos_fout_1Hz)), '--', 'LineWidth', 1.8, 'Color', 'k');
 
 hold off;
 
@@ -60,7 +60,7 @@ xlabel('Frequency (Hz)', 'FontSize', 10);
 ylabel('Sensitivity (fT/Hz^{1/2})', 'FontSize', 10);
 
 % Add legend
-legend( 'delay 0','delay 2', 'FontSize', 8,'box','off');
+legend( 'Measurement','KF estimate', 'FontSize', 8,'box','off');
 
 % Adjust the line widths for better visibility in print
 set(findobj(gca, 'Type', 'Line'), 'LineWidth', 1.2);
@@ -72,6 +72,6 @@ ax.Box = 'on';
 
 % Adjust the tick labels font size
 set(gca, 'FontSize', 8);
-
+text(0.98, 0.09, 'Quantum Noise Limit', 'Units', 'normalized', 'FontSize', 8, 'HorizontalAlignment', 'right');
 % Save the figure as a high-resolution image for the scientific paper
 print('../result/KF_track30Hz_sensitivity', '-dpng', '-r600'); % Specify the desired image format and resolution

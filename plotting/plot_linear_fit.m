@@ -84,9 +84,9 @@ xticks([-200,-150,-100, -50,0,50,100,150,200]);
 
 % % Extract the slope
 % % Extract the slope and intercept
-% slope = coefficients(1);
+slope = coefficients(1);
 % intercept = coefficients(2);
 
-% disp(['The slope (k) of the linear line is: ' num2str(slope)]);
-% disp(['The intercept (b) of the linear line is: ' num2str(intercept)]);
+disp(['The slope (k) of the linear line is: ' num2str(slope)]);
+disp(['The intercept (b) of the linear line is: ' num2str(intercept)]);
 % print('../result/fig3', '-dpng', '-r600'); % Specify the desired image format and resolution

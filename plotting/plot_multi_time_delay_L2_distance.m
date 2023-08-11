@@ -5,7 +5,7 @@ close all
 % Load data
 C1_Ref = load('../result/ZRef_145C.txt');
 C1_delays = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11, 12];
-
+RGB_color = [ 0.9765 ,   0.3294  ,  0.3137];
 % Initialize array to store L2 norm distances
 L2_distances = zeros(size(C1_delays));
 count_num = 150;
@@ -23,14 +23,14 @@ end
 
 % Create and customize the plot
 figure('Units', 'centimeters', 'Position', [2, 2, 10, 8]);
-plot(C1_delays, L2_distances, 'o-'); % You can adjust the marker style as needed
+plot(C1_delays, L2_distances, 'o-','Color',RGB_color, 'LineWidth', 1.5); % You can adjust the marker style as needed
 xlabel('\tau (ms)', 'FontSize', 10);
 ylabel('mean L2 Norm Distance (pT)', 'FontSize', 10);
 %title('L2 Norm Distance vs. Delay');
 grid on;
 % Adjust figure properties for publication quality
 set(gca, 'FontSize', 8); % Decrease font size slightly for publication
-set(gca, 'LineWidth', 1.5); % Increase line width
+set(gca, 'LineWidth', 0.7); % Increase line width
 set(gca, 'TickDir', 'in'); % Set tick direction
 set(gcf, 'Color', 'w'); % Set background color to white
 
