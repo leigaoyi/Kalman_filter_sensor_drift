@@ -4,8 +4,8 @@ close all
 
 
 N = 9;
-filename1 = sprintf('../result/yMeasure_delay8_startN%d_145C_50Hz.txt', N);
-filename2 = sprintf('../result/KF_y_delay8_startN%d_145C_50Hz.txt', N);
+filename1 = sprintf('../result/yMeasure_delay8_startN%d_135C_50Hz.txt', N);
+filename2 = sprintf('../result/KF_y_delay8_startN%d_135C_50Hz.txt', N);
 
 C1_sin_data = load(filename1);
 C1_cos_data = load(filename2);
@@ -15,7 +15,7 @@ measure_color = [0.9294,0.1294,0.1608]; % RGB values for #ED2129
 track_color = [0.23, 0.27, 0.61];
 
 % Set the figure size and position
-figure('Units', 'centimeters', 'Position', [2, 2, 10, 8]);
+figure('Units', 'centimeters', 'Position', [2, 2, 18, 16]);
 
 % Sampling frequency
 fs = 1000;

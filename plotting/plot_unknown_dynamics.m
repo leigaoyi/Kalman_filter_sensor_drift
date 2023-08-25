@@ -1,8 +1,8 @@
 close all
 clear
 
-input_curve = load('./data/Input_unknown.txt');
-track_input = load('./data/KF_track_in.txt');
+input_curve = load('../result/Measure_unknown.txt');
+track_input = load('../result/KF_track_unknown_measure.txt');
 time_axis = linspace(0, (length(input_curve)-1)*1e-3, length(input_curve));
 
 % Convert the hexadecimal color code to RGB values
@@ -24,10 +24,10 @@ ylabel('Response (mV)', 'FontSize', 10); % Adjust font size
 grid on;
 
 % Set y-axis limits
-ylim([-17, 15.5]);
+%ylim([-17, 15.5]);
 
 % Adjust the legend position
-%legend('Input Curve', 'Track Input', 'Location', 'best');
+legend('Measurement', 'KF estimate', 'Location', 'best');
 %legend('boxoff');
 
 % Adjust the tick labels font size
@@ -42,4 +42,4 @@ ax.LineWidth = 0.8;
 ax.Box = 'on';
 
 % Save the figure as a high-resolution image for the scientific paper
-print('plot_track_dynamic_input', '-dpng', '-r600'); % Specify the desired image format and resolution
+%print('plot_track_dynamic_input', '-dpng', '-r600'); % Specify the desired image format and resolution
