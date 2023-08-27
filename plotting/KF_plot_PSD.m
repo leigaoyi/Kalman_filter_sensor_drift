@@ -9,7 +9,7 @@ measure_color = [0.9294,0.1294,0.1608]; % RGB values for #ED2129
 track_color = [0.23, 0.27, 0.61];
 
 % Set the figure size and position
-figure('Units', 'centimeters', 'Position', [2, 2, 10, 8]);
+figure('Units', 'centimeters', 'Position', [2, 2, 16, 9]);
 
 % Sampling frequency
 fs = 1000;
@@ -30,17 +30,18 @@ figure(1);
 [C1_sin_fout_1Hz, C1_sin_PSD_1Hz] = My_PSD(C1_sin_adc_data_voltage, fs);
 response_max = max(C1_sin_PSD_1Hz);
 C1_sin_PSD_1Hz = C1_sin_PSD_1Hz / response_max * 100 * 1e3; %fT
-semilogy(C1_sin_fout_1Hz, C1_sin_PSD_1Hz, 'LineWidth', 1.8, 'Color', track_color);
+semilogy(C1_sin_fout_1Hz, C1_sin_PSD_1Hz, 'LineWidth', 1.5, 'Color', track_color);
 
 hold on;
 [C1_cos_fout_1Hz, C1_cos_PSD_1Hz] = My_PSD(C1_cos_adc_data_voltage, fs);
 C1_cos_PSD_1Hz = C1_cos_PSD_1Hz / response_max * 100 * 1e3; %fT
-semilogy(C1_cos_fout_1Hz, C1_cos_PSD_1Hz, 'LineWidth', 1.8, 'Color', measure_color);
+semilogy(C1_cos_fout_1Hz, C1_cos_PSD_1Hz, 'LineWidth', 1.5, 'Color', measure_color);
 hold on;
 
 
+
 % Add the dashed line y = 1.8824
-semilogy(C1_cos_fout_1Hz, 1.8824 * ones(size(C1_cos_fout_1Hz)), '--', 'LineWidth', 1.8, 'Color', 'k');
+plot(C1_cos_fout_1Hz, 1.8824 * ones(size(C1_cos_fout_1Hz)), '--', 'LineWidth', 1.5, 'Color', 'k');
 
 hold off;
 
@@ -60,18 +61,27 @@ xlabel('Frequency (Hz)', 'FontSize', 10);
 ylabel('Sensitivity (fT/Hz^{1/2})', 'FontSize', 10);
 
 % Add legend
-legend( 'Measurement','KF estimate', 'FontSize', 8,'box','off');
+legend( 'Measurement','KF estimate', 'FontSize', 12,'box','off');
 
 % Adjust the line widths for better visibility in print
-set(findobj(gca, 'Type', 'Line'), 'LineWidth', 1.2);
+set(findobj(gca, 'Type', 'Line'), 'LineWidth', 0.5);
 
 % Adjust the axes properties
 ax = gca;
-ax.LineWidth = 0.8;
+ax.LineWidth = 0.5;
 ax.Box = 'on';
 
 % Adjust the tick labels font size
-set(gca, 'FontSize', 8);
-text(0.98, 0.09, 'Quantum Noise Limit', 'Units', 'normalized', 'FontSize', 8, 'HorizontalAlignment', 'right');
+set(gca, 'FontSize', 10);
+text(0.98, 0.09, 'Quantum Noise Limit', 'Units', 'normalized', 'FontSize', 12, 'HorizontalAlignment', 'right');
 % Save the figure as a high-resolution image for the scientific paper
-print('../result/KF_track30Hz_sensitivity', '-dpng', '-r600'); % Specify the desired image format and resolution
+%print('../result/KF_track30Hz_sensitivity', '-dpng', '-r600'); % Specify the desired image format and resolution
+residual_data = C1_sin_PSD_1Hz - C1_cos_PSD_1Hz;
+figure;
+plot(residual_data);
+xlim([1, 100]);
+
+figure;
+semilogy(residual_data);
+xlim([1,100]);
+

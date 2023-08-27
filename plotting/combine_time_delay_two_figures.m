@@ -12,7 +12,7 @@ delay0_color = [2, 46, 89]/255;
 curve_color = [12, 143, 215]/255;
 
 
-figure('Units', 'centimeters', 'Position', [2, 2, 12, 18]);
+figure('Units', 'centimeters', 'Position', [2, 2, 16, 18]);
 subplot(2, 1, 1); % Divide the figure into 1 row, 2 columns, and select the first subplot
 
 ref_curve = load('../result/ZRef_145C.txt');
@@ -39,9 +39,16 @@ plot(time_axis, delay1(1:show_num), '--','Color', delay1_color, 'LineWidth', 1.5
 % plot(time_axis, delay2(1:show_num), '--', 'LineWidth', 1.5);
 plot(time_axis, delay3(1:show_num), '--', 'Color', delay3_color, 'LineWidth', 1.5);
 
-legend('Ref', '\tau = 0', '\tau = 4','\tau = 8', 'FontSize', 8, 'Box', 'off' ,'Location', 'southeast');
-xlabel('Record Time (ms)', 'FontSize', 10);
+legend('Ref', '\tau = 0', '\tau = 4','\tau = 8', 'FontSize', 12, 'Box', 'off' ,'Location', 'southeast');
+xlabel('Time (ms)', 'FontSize', 10);
 ylabel('Measurement (pT)', 'FontSize', 10);
+
+%legend('boxoff');
+% Get the handle to the legend
+lgd = legend;
+% Adjust the position of the legend
+newLegendPosition = lgd.Position + [-0.01, 0, 0, -0.1]; % Move slightly to the left
+lgd.Position = newLegendPosition;
 
 
 % Set the number of grid lines you want on the x and y axes
@@ -63,8 +70,8 @@ grid on;
 %xlim([0, 94]);
 
 % Adjust figure properties for publication quality
-set(gca, 'FontSize', 8); % Decrease font size slightly for publication
-set(gca, 'LineWidth', 0.7); % Increase line width
+set(gca, 'FontSize', 10); % Decrease font size slightly for publication
+set(gca, 'LineWidth', 0.5); % Increase line width
 set(gca, 'TickDir', 'in'); % Set tick direction
 set(gcf, 'Color', 'w'); % Set background color to white
 
@@ -99,8 +106,8 @@ ylabel('mean L2 Norm Distance (pT)', 'FontSize', 10);
 %title('L2 Norm Distance vs. Delay');
 grid on;
 % Adjust figure properties for publication quality
-set(gca, 'FontSize', 8); % Decrease font size slightly for publication
-set(gca, 'LineWidth', 0.7); % Increase line width
+set(gca, 'FontSize', 10); % Decrease font size slightly for publication
+set(gca, 'LineWidth', 0.5); % Increase line width
 set(gca, 'TickDir', 'in'); % Set tick direction
 set(gcf, 'Color', 'w'); % Set background color to white
 
@@ -111,12 +118,12 @@ ax1.Position(2) = ax1.Position(2) - 0.03;
 ax2.Position(4) = ax2.Position(4) + 0.03;
 
 
-text(-0.06, 2.09, '(a)', 'Units', 'normalized', 'FontSize', 10, 'FontWeight', 'bold', 'HorizontalAlignment', 'right');
+text(-0.06, 2.12, '(a)', 'Units', 'normalized', 'FontSize', 10, 'FontWeight', 'bold', 'HorizontalAlignment', 'right');
 % Add label "(b)" outside the plot box
 text(-0.06, 1.01, '(b)', 'Units', 'normalized', 'FontSize', 10, 'FontWeight', 'bold', 'HorizontalAlignment', 'right');
 
 % Use tightfig to adjust subplot spacing
 tightfig;
 
-print('../result/Time_delay_multi_fig', '-dpng', '-r600'); % Specify the desired image format and resolution
+print('../figures/Time_delay_multi_fig', '-dpng', '-r600'); % Specify the desired image format and resolution
 

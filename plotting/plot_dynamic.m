@@ -1,8 +1,8 @@
 close all
 clear
 
-input_curve = load('../data/Input_unknown.txt');
-track_input = load('../data/KF_track_in.txt');
+input_curve = load('../result/Input_unknown.txt');
+track_input = load('../result/KF_track_in.txt');
 time_axis = linspace(0, (length(input_curve)-1)*1e-3, length(input_curve));
 
 % Convert the hexadecimal color code to RGB values

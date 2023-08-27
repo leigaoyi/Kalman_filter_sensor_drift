@@ -12,9 +12,9 @@ figure('Units', 'centimeters', 'Position', [2, 2, 10, 6]); % Adjust the figure s
 
 hold on; % Enable holding multiple plots in the same figure
 %plot(time_axis, input_curve, 'Color', input_color, 'LineWidth', 1.5); % Plot the input_curve with a linewidth of 2
-plot(time_axis, track_input, 'Color', track_color, 'LineWidth', 1.5);
+plot(time_axis, input_curve, 'Color', track_color, 'LineWidth', 1.5);
 % Plot the track_input as scatter points with delay step of 3
-scatter(time_axis(1:3:end), input_curve(1:3:end), 'MarkerFaceColor', input_color, 'MarkerEdgeColor', input_color, 'SizeData', 8);
+scatter(time_axis(1:3:end), track_input(1:3:end), 'MarkerFaceColor', input_color, 'MarkerEdgeColor', input_color, 'SizeData', 8);
 
 hold off; % Disable holding multiple plots
 

@@ -9,6 +9,11 @@ measure_std = 1 * load('../result/yMeasure_100epoch_std.txt');
 track_mean = load('../result/KF_y_100epoch_mean.txt');
 track_std = 1 * load('../result/KF_y_100epoch_std.txt'); % 2 std
 
+
+measure_mean = circshift(measure_mean, [3]); % 正值向右移，负值向左移
+track_mean = circshift(track_mean, [0]);
+
+
 kresponse = 0.8072 ; % 145C, mV/pT
 
 measure_mean = abs(measure_mean - ref_curve)/kresponse;
@@ -56,11 +61,11 @@ a = cat(2, time_period, fliplr(time_period));
 b = cat(2, measure_lower, fliplr(measure_upper));
 
 % Plot the curves with error areas
-fill(a, b, measure_color, 'FaceAlpha', 0.3);
+fill(a, b, measure_color, 'FaceAlpha', 0.5, 'EdgeColor', measure_color);
 hold on;
 track_area = [track_lower, fliplr(track_upper)];
 track_area = reshape(track_area, [1, 100]);
-fill([time_period, fliplr(time_period)], track_area, track_color, 'FaceAlpha', 0.3);
+fill([time_period, fliplr(time_period)], track_area, track_color, 'FaceAlpha', 0.5, 'EdgeColor', track_color);
 plot(time_period, measure_mean, 'LineWidth', 1.5, 'Color', measure_color);
 plot(time_period, track_mean, 'LineWidth', 1.5, 'Color', track_color);
 
@@ -78,3 +83,6 @@ set(gca, 'FontSize', 16); % Decrease font size slightly for publication
 set(gca, 'LineWidth', 1.5); % Increase line width
 set(gca, 'TickDir', 'in'); % Set tick direction
 set(gcf, 'Color', 'w'); % Set background color to white
+
+
+

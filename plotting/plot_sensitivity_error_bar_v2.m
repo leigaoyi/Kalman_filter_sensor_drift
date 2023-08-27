@@ -51,7 +51,7 @@ legend('Measurement Sensitivity', 'KF Estimate Sensitivity', 'FontSize', 8, 'Box
 % Adjust figure properties
 grid on;
 set(gca, 'FontSize', 10);
-set(gca, 'LineWidth', 0.7);
+set(gca, 'LineWidth', 0.5);
 set(gca, 'TickDir', 'in');
 set(gca, 'Box', 'on');
 set(gcf, 'Color', 'w');
@@ -64,7 +64,7 @@ text(0.98, 0.09, 'Quantum Noise Limit', 'Units', 'normalized', 'FontSize', 8, 'H
 
 % Save the figure as a high-resolution image
 %print('sensitivity_plot', '-dpng', '-r300');
-print('../result/KF_sensitivity_errorBars', '-dpng', '-r600');
+%print('../result/KF_sensitivity_errorBars', '-dpng', '-r600');
 
 
 
