@@ -93,8 +93,8 @@ measure_std = [2.790600095	2.671237957	2.930054228	3.614086022	2.783640502	2.598
 freq_range = [20 25 30 35 40 45 50];
 
 % Define custom colors
-measurement_color = [0.9294,0.1294,0.1608];
-kf_color = [0.23, 0.27, 0.61];
+measurement_color = [0.23, 0.27, 0.61];
+kf_color =[0.9294,0.1294,0.1608] ;
 
 
 % Plot measured data with error bars

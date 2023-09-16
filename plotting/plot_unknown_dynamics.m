@@ -44,14 +44,14 @@ newLegendPosition = lgd.Position + [0, 0.06, 0.06, 0.00]; % Move slightly to the
 lgd.Position = newLegendPosition;
 
 % Adjust the tick labels font size
-set(gca, 'FontSize', 8);
+set(gca, 'FontSize', 10);
 
 % Adjust the line widths for better visibility in print
-set(findobj(gca, 'Type', 'Line'), 'LineWidth', 1.2);
+set(findobj(gca, 'Type', 'Line'), 'LineWidth', 0.5);
 
 % Adjust the axes properties
 ax = gca;
-ax.LineWidth = 0.8;
+ax.LineWidth = 0.5;
 ax.Box = 'on';
 
 % Save the figure as a high-resolution image for the scientific paper

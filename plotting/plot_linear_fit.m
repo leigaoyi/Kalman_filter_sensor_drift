@@ -36,7 +36,7 @@ set(gca, 'GridColor', gridLineColor, 'LineWidth', gridLineWidth, 'FontSize', 14)
 % Adjust axis limits if needed
 xlim([min(input_signal)-1.5, max(input_signal)+1.5]);
 ylim([min(output_signal)-300, max(output_signal)+300]);
-print('../result/sweep_large_ZI', '-dpng', '-r1000'); % Specify the desired image format and resolution
+%print('../result/sweep_large_ZI', '-dpng', '-r1000'); % Specify the desired image format and resolution
 
 input_signal2 = 1000*load('../result/145C_small_sweep_x.txt')*9.2393;
 output_signal2 = 1000*load('../result/145C_small_sweep_y.txt');
@@ -64,15 +64,17 @@ ylabel('Response (mV)', 'FontSize', 14); % Adjust font size
 %title('Linear Fitting', 'FontSize', 12, 'FontWeight', 'bold'); % Adjust font size and add bold font weight
 
 % Add legend
-legend('Experimental Data', 'Linear Fitting', 'FontSize', 12, 'Box', 'off', 'Location', 'northwest'); % Adjust font size
+legend('Experimental Data', 'Linear Fitting', 'FontSize', 14, 'Box', 'off', 'Location', 'northwest'); % Adjust font size
 
 % Customize grid appearance
 grid on;
 gridLineColor = [0.8, 0.8, 0.8]; % RGB values for grid line color
 gridLineWidth = 0.5;
-set(gca, 'GridColor', gridLineColor, 'LineWidth', gridLineWidth, 'FontSize', 12); % Adjust font size
-xticks([-200,-150,-100, -50,0,50,100,150,200]);
-
+set(gca, 'GridColor', gridLineColor, 'LineWidth', gridLineWidth, 'FontSize', 16); % Adjust font size
+%xticks([-200,-150,-100, -50,0,50,100,150,200]);
+xticks([-150,-100, -50,0,50,100,150]);
+xlim([-150,150]);
+ylim([-130,130]);
 %print('../result/sweep_small_fit', '-dpng', '-r1000'); % Specify the desired image format and resolution
 % Adjust axis limits if needed
 % xlim([min(input_signal2)-1.5, max(input_signal2)+1.5]);
@@ -88,5 +90,5 @@ slope = coefficients(1);
 % intercept = coefficients(2);
 
 disp(['The slope (k) of the linear line is: ' num2str(slope)]);
-disp(['The intercept (b) of the linear line is: ' num2str(intercept)]);
-% print('../result/fig3', '-dpng', '-r600'); % Specify the desired image format and resolution
+%disp(['The intercept (b) of the linear line is: ' num2str(intercept)]);
+print('../result/small_sweep', '-dpng', '-r600'); % Specify the desired image format and resolution

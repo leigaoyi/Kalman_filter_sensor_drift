@@ -139,5 +139,5 @@ text(-0.07, 0.99, '(b)', 'Units', 'normalized', 'FontSize', 10, 'FontWeight', 'b
 
 tightfig;
 
-print('../figures/Track_Unknown_twoFigures', '-dpng', '-r600'); % Specify the desired image format and resolution
+%print('../figures/Track_Unknown_twoFigures', '-dpng', '-r600'); % Specify the desired image format and resolution
 

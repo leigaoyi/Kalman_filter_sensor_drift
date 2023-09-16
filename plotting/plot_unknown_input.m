@@ -66,4 +66,4 @@ ax.LineWidth = 1.5;
 ax.Box = 'on';
 
 % Save the figure as a high-resolution image for the scientific paper
-print('../figures/plot_track_unknown_input', '-dpng', '-r300'); % Specify the desired image format and resolution
+%print('../figures/plot_track_unknown_input', '-dpng', '-r300'); % Specify the desired image format and resolution

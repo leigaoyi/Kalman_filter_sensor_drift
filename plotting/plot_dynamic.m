@@ -70,7 +70,7 @@ set(findobj(gca, 'Type', 'Line'), 'LineWidth', 1.2);
 
 % Adjust the axes properties
 ax = gca;
-ax.LineWidth = 0.8;
+ax.LineWidth = 0.5;
 ax.Box = 'on';
 
 % Save the figure as high-resolution images for the scientific paper

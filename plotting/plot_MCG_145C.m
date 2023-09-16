@@ -5,7 +5,11 @@ clc
 input_curve = load('../result/ZRef_145C_MCG.txt');
 KF_track_input = load('../result/KF_y_delay8_startN0_145C_MCG.txt');
 ymeasure = load('../result/yMeasure_delay8_startN0_145C_MCG.txt');
+
+
 time_axis = linspace(0, (length(input_curve)-1)*1e-3, length(input_curve));
+
+
 
 % Convert the hexadecimal color code to RGB values
 track_color = [237, 33, 41] / 255; % RGB values for #ED2129

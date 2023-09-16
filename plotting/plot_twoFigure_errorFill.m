@@ -22,6 +22,12 @@ track_mean = (track_mean - ref_curve)/kresponse;
 measure_std = measure_std/kresponse;
 track_std = track_std/kresponse;
 
+mean(abs(measure_mean))
+mean(abs(track_mean))
+
+mean(measure_std)
+mean(track_std)
+
 time_period = 1:50; % Example range from 1 to 50
 time_period = reshape(time_period, 1, 50);
 
@@ -71,7 +77,7 @@ plot(time_period, track_mean, 'LineWidth', 1.5, 'Color', track_color);
 xticklabels({});
 
 ylabel('Measurement Error (pT)', 'FontSize', 10);
-legend('Measurement error', 'KF estimate error', 'FontSize', 12, 'Box', 'off');
+legend('Measurement error', 'KF estimate error', 'FontSize', 12, 'Box', 'off','location','northeast');
 grid on;
 box on;
 xlim([0.5, 50.5]);
@@ -122,6 +128,6 @@ text(-0.06, 0.99, '(b)', 'Units', 'normalized', 'FontSize', 10, 'FontWeight', 'b
 % Use tightfig to adjust subplot spacing
 tightfig;
 
-print('../figures/Error_fill_twoFigures', '-dpng', '-r600'); % Specify the desired image format and resolution
+print('../figures/Error_fill_twoFigures', '-dpng', '-r400'); % Specify the desired image format and resolution
 
 

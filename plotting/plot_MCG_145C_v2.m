@@ -4,8 +4,8 @@ clc
 
 % Load data, mV--> pT
 input_curve = load('../result/ZRef_145C_MCG.txt') / 0.8072;
-KF_track_input = load('../result/KF_y_delay8_startN0_145C_MCG.txt') / 0.8072;
-ymeasure = load('../result/yMeasure_delay8_startN0_145C_MCG.txt') / 0.8072;
+KF_track_input = load('../result/KF_y_delay4_startN0_145C_MCG.txt') / 0.8072;
+ymeasure = load('../result/yMeasure_delay4_startN0_145C_MCG.txt') / 0.8072;
 time_axis = linspace(0, (length(input_curve)-1)*1e-3, length(input_curve));
 
 % Define colors
@@ -17,7 +17,7 @@ fig = figure('Units', 'centimeters', 'Position', [2, 2, 16, 9]);
 hold on;
 
 % Plot curves
-plot(time_axis, input_curve, 'b', 'LineWidth', 1.5);
+plot(time_axis, input_curve, 'k', 'LineWidth', 1.5);
 plot(time_axis, KF_track_input, 'Color', track_color, 'LineWidth', 1.5);
 plot(time_axis, ymeasure, 'Color', input_color,  'LineWidth', 1.5); % Use black color for measurements
 
@@ -50,8 +50,26 @@ tightfig;
 %print('plot_system_response', '-depsc', '-r300'); % Save as EPS format for vector quality
  print('../figures/plot_MCG', '-dpng', '-r300'); % Save as PNG for bitmap
 
+% Calculate signal power
+signal_power = mean(input_curve.^2);
 
+% Calculate noise power for KF estimate
+noise_power_KF = signal_power - mean(KF_track_input.^2);
 
+% Calculate noise power for measurements
+noise_power_measure = signal_power - mean(ymeasure.^2);
+
+% Calculate SNR for KF estimate and measurements
+SNR_KF = 10 * log10(signal_power / noise_power_KF);
+SNR_Measure = 10 * log10(signal_power / noise_power_measure);
+
+% Display the calculated SNR values
+fprintf('SNR for KF estimate: %.2f dB\n', SNR_KF);
+fprintf('SNR for Measurements: %.2f dB\n', SNR_Measure);
+
+MaxMin_meausre = max(ymeasure) - min(ymeasure)
+MaxMin_estiamte = max(KF_track_input) - min(KF_track_input)
+MaxMin_ref = max(input_curve) - min(input_curve)
 
 
 
